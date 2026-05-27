@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="de">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>QR-Code Generator</title>
+    <link rel="stylesheet" href="styles.css" />
+    <script src="https://cdn.jsdelivr.net/npm/qrcode-generator@1.4.4/qrcode.min.js"></script>
+  </head>
+  <body>
+    <main class="app">
+      <section class="workspace" aria-label="QR-Code Generator">
+        <div class="panel controls">
+          <div>
+            <p class="eyebrow">QR-Code Generator</p>
+            <h1>Text, Link oder Kontaktdaten in einen QR-Code verwandeln</h1>
+          </div>
+
+          <label class="field">
+            <span>Inhalt</span>
+            <textarea id="qrText" rows="7" placeholder="https://example.com">https://example.com</textarea>
+          </label>
+
+          <div class="grid">
+            <label class="field">
+              <span>Größe</span>
+              <input id="qrSize" type="range" min="160" max="420" value="280" />
+            </label>
+
+            <label class="field">
+              <span>Fehlerkorrektur</span>
+              <select id="qrCorrection">
+                <option value="L">Niedrig</option>
+                <option value="M" selected>Mittel</option>
+                <option value="Q">Hoch</option>
+                <option value="H">Sehr hoch</option>
+              </select>
+            </label>
+          </div>
+
+          <div class="grid">
+            <label class="field">
+              <span>Vordergrund</span>
+              <input id="qrDark" type="color" value="#111827" />
+            </label>
+
+            <label class="field">
+              <span>Hintergrund</span>
+              <input id="qrLight" type="color" value="#ffffff" />
+            </label>
+          </div>
+
+          <div class="actions">
+            <button id="downloadPng" type="button">PNG herunterladen</button>
+            <button id="copySvg" type="button" class="secondary">SVG kopieren</button>
+          </div>
+
+          <p id="status" class="status" role="status" aria-live="polite"></p>
+        </div>
+
+        <div class="preview">
+          <div id="qrCode" class="qr-box" aria-label="Generierter QR-Code"></div>
+        </div>
+      </section>
+    </main>
+
+    <script src="app.js"></script>
+  </body>
+</html>
